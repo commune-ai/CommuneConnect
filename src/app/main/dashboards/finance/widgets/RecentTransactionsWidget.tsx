@@ -15,154 +15,129 @@ import { selectWidgets } from '../store/widgetsSlice';
 import RecentTransactionsWidgetType from '../types/RecentTransactionsWidgetType';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Rating from '@mui/material/Rating';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import { useState, useEffect } from 'react';
 
 /**
  * The RecentTransactionsWidget widget.
  */
 function RecentTransactionsWidget() {
-	const widgets = useAppSelector(selectWidgets);
-	const { columns, rows } = widgets.recentTransactions as RecentTransactionsWidgetType;
+    const [modules, setModules] = useState([]);
 
-	return (
-		<Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">
-			<div className="table-responsive mt-24">
-				<Table className="simple w-full min-w-full">
-					<TableHead>
-						<TableRow>
-							<TableCell style={{width: "50px"}}>
-							<Checkbox style={{marginLeft: "-8px"}}/>
-							</TableCell>
-							{columns.map((column, index) => (
-								<TableCell key={index}>
-									<Typography
-										color="text.secondary"
-										className="font-semibold text-12 whitespace-nowrap"
-									>
-										{column}
-									</Typography>
-								</TableCell>
-							))}
+    useEffect(() => {
+        fetchModules();
+    }, []);
 
-							<TableCell>
-								{/* <FuseSvgIcon className="text-white opacity-75">
-								heroicons-outline:trash
-								</FuseSvgIcon> */}
-								<IconButton aria-label="Add photo">
-									<FuseSvgIcon size={20}>heroicons-outline:trash</FuseSvgIcon>
-								</IconButton>
-							</TableCell>
-						</TableRow>
-					</TableHead>
+    const fetchModules = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/modules');
+            if (response.ok) {
+                const data = await response.json();
+                setModules(data);
+            } else {
+                console.error('Failed to fetch modules:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching modules:', error);
+        }
+    };
 
-					<TableBody>
-						{rows.map((row, index) => (
-							<TableRow key={index}>
-								{Object.entries(row).map(([key, value]) => {
-									switch (key) {
-										case 'trash': {
-											return (
-												<TableCell 
-													key={key}
-													component="th"
-													scope="row" 
-												>
-													<div style={{display: "flex", justifyContent: "start", alignItems: "center"}}>
-														<Rating name="customized-1" defaultValue={0} max={1} style={{marginLeft: "-100px", marginRight: "70px"}} />
-														<IconButton aria-label="Add photo">
-															<FuseSvgIcon size={20}>heroicons-outline:dots-horizontal</FuseSvgIcon>
-														</IconButton>
-													</div>
-												</TableCell>
-											);
-										}
-										case 'checkbox': {
-											return (
-												<TableCell
-													key={key}
-													component="th"
-													scope="row" 
-													style={{width: "50px"}}>
-													<Checkbox />
-												</TableCell>
-											);
-										}
-										case 'id': {
-											return (
-												<TableCell
-													key={key}
-													component="th"
-													scope="row"
-												>
-													<Typography color="text.secondary">{value}</Typography>
-												</TableCell>
-											);
-										}
-										case 'Name': {
-											return (
-												<TableCell
-													key={key}
-													component="th"
-													scope="row"
-												>
-													<Typography>{value}</Typography>
-												</TableCell>
-											);
-										}
-										case 'Email': {
-											return (
-												<TableCell
-													key={key}
-													component="th"
-													scope="row"
-												>
-													<Typography>
-														{value}
-													</Typography>
-												</TableCell>
-											);
-										}
-										case 'status': {
-											return (
-												<TableCell
-													key={key}
-													component="th"
-													scope="row"
-												>
-													<Typography
-														className={clsx(
-															'inline-flex items-center font-bold text-10 px-10 py-2 rounded-full tracking-wide uppercase',
-															value === 'pending' &&
-																'bg-red-100 text-red-800 dark:bg-red-600 dark:text-red-50',
-															value === 'completed' &&
-																'bg-green-50 text-green-800 dark:bg-green-600 dark:text-green-50'
-														)}
-														style={{height: "30px", width: "100px", display: "flex", justifyContent: "center"}}
-													>
-														{value}
-													</Typography>
-												</TableCell>
-											);
-										}
-										default: {
-											return (
-												<TableCell
-													key={key}
-													component="th"
-													scope="row"
-												>
-													<Typography>{value}</Typography>
-												</TableCell>
-											);
-										}
-									}
-								})}
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</div>
-		</Paper>
-	);
+    return (
+        <Paper className="flex flex-col flex-auto p-24 shadow rounded-2xl overflow-hidden">
+            <div className="table-responsive mt-24">
+                <Table className="simple w-full min-w-full">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell style={{ width: "50px" }}>
+                                <Checkbox style={{ marginLeft: "-8px" }} />
+                            </TableCell>
+                            <TableCell>
+                                <Typography color="text.secondary" className="font-semibold text-12 whitespace-nowrap">
+                                    ID
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography color="text.secondary" className="font-semibold text-12 whitespace-nowrap">
+                                    Name
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography color="text.secondary" className="font-semibold text-12 whitespace-nowrap">
+                                    Email
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography color="text.secondary" className="font-semibold text-12 whitespace-nowrap">
+                                    Date
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography color="text.secondary" className="font-semibold text-12 whitespace-nowrap">
+                                    Status
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography color="text.secondary" className="font-semibold text-12 whitespace-nowrap">
+                                    Star
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography color="text.secondary" className="font-semibold text-12 whitespace-nowrap">
+                                    Actions
+                                </Typography>
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {modules.map((module, index) => (
+                            <TableRow key={index}>
+                                <TableCell key={`${index}-checkbox`} component="th" scope="row" style={{ width: "50px" }}>
+                                    <Checkbox />
+                                </TableCell>
+                                <TableCell key={`${index}-id`} component="th" scope="row">
+                                    <Typography color="text.secondary">{module.id}</Typography>
+                                </TableCell>
+                                <TableCell key={`${index}-Name`} component="th" scope="row">
+                                    <Typography>{module.Name}</Typography>
+                                </TableCell>
+                                <TableCell key={`${index}-Email`} component="th" scope="row">
+                                    <Typography>{module.Email}</Typography>
+                                </TableCell>
+                                <TableCell key={`${index}-Date`} component="th" scope="row">
+                                    <Typography color="text.secondary">{module.Date}</Typography>
+                                </TableCell>
+                                <TableCell key={`${index}-status`} component="th" scope="row">
+                                    <Typography
+                                        className={clsx(
+                                            'inline-flex items-center font-bold text-10 px-10 py-2 rounded-full tracking-wide uppercase',
+                                            module.status === 'pending' && 'bg-red-100 text-red-800 dark:bg-red-600 dark:text-red-50',
+                                            module.status === 'completed' && 'bg-green-50 text-green-800 dark:bg-green-600 dark:text-green-50'
+                                        )}
+                                        style={{ height: "30px", width: "100px", display: "flex", justifyContent: "center" }}
+                                    >
+                                        {module.status}
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    {/* Render star icon */}
+                                    <IconButton aria-label="Star">
+                                        <Rating name={`customized-${index}`} defaultValue={0} max={1} />
+                                    </IconButton>
+                                </TableCell>
+                                <TableCell>
+                                    {/* Render delete icon */}
+                                    <IconButton aria-label="Delete">
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </div>
+        </Paper>
+    );
 }
 
 export default memo(RecentTransactionsWidget);
