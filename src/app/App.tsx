@@ -16,12 +16,11 @@ import settingsConfig from 'app/configs/settingsConfig';
 import { useAppSelector } from 'app/store';
 import withAppProviders from './withAppProviders';
 import { AuthProvider } from './auth/AuthContext';
-
-// import axios from 'axios';
+import axios from 'axios';
 /**
  * Axios HTTP Request defaults
  */
-// axios.defaults.baseURL = "";
+// axios.defaults.baseURL = process.env.SERVER_URL;
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 // axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
