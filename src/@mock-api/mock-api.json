@@ -469,7 +469,7 @@
       },
       "parameters": []
     },
-    "/dashboards/finance/widgets": {
+    "/dashboards/module/widgets": {
       "get": {
         "summary": "Get Finance Dashboard Widgets",
         "responses": {
@@ -482,17 +482,17 @@
                 },
                 "examples": {
                   "example-1": {
-                    "$ref": "#/components/examples/finance_dashboard_widgets"
+                    "$ref": "#/components/examples/module_dashboard_widgets"
                   }
                 }
               }
             }
           }
         },
-        "operationId": "financeDashboard_getWidgets",
+        "operationId": "moduleDashboard_getWidgets",
         "description": "Retrieve Finance dashboard widgets.",
         "tags": [
-          "finance-dashboard"
+          "module-dashboard"
         ]
       },
       "parameters": []
@@ -17360,7 +17360,7 @@
           {
             "id": "181728f4-87c8-45c5-b9cc-92265bcd2f4d",
             "title": "Looking at Campaign Finance with BigQuery",
-            "slug": "looking-at-campaign-finance-with-bigquery",
+            "slug": "looking-at-campaign-module-with-bigquery",
             "description": "Dive deep into BigQuery: Campaign Finance",
             "category": "cloud",
             "duration": 60,
@@ -28850,7 +28850,7 @@
           ]
         }
       },
-      "finance_dashboard_widgets": {
+      "module_dashboard_widgets": {
         "value": {
           "accountBalance": {
             "growRate": 38.33,
@@ -32915,7 +32915,7 @@
       "description": "File Manager App"
     },
     {
-      "name": "finance-dashboard",
+      "name": "module-dashboard",
       "description": "Finance Dashboard App"
     },
     {

@@ -8,9 +8,9 @@ import Paper from '@mui/material/Paper';
 
 
 /**
- * The FinanceDashboardAppHeader component.
+ * The ModuleDashboardAppHeader component.
  */
-function FinanceDashboardAppHeader() {
+function ModuleDashboardAppHeader() {
 	return (
 		<div className="flex w-full container">
 			<div className="flex flex-col sm:flex-row flex-auto sm:items-center min-w-0 p-24 md:p-32 pb-0 md:pb-0">
@@ -49,4 +49,4 @@ function FinanceDashboardAppHeader() {
 	);
 }
 
-export default FinanceDashboardAppHeader;
+export default ModuleDashboardAppHeader;

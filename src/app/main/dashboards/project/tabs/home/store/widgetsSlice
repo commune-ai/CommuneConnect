@@ -9,8 +9,8 @@ type WidgetsType = {
 	[key: string]: unknown;
 };
 
-export const getWidgets = createAppAsyncThunk('financeDashboardApp/widgets/getWidgets', async () => {
-	const response = await axios.get('/api/dashboards/finance/widgets');
+export const getWidgets = createAppAsyncThunk('moduleDashboardApp/widgets/getWidgets', async () => {
+	const response = await axios.get('/api/dashboards/module/widgets');
 
 	const data = (await response.data) as WidgetsType;
 
@@ -20,10 +20,10 @@ export const getWidgets = createAppAsyncThunk('financeDashboardApp/widgets/getWi
 const initialState: WidgetsType = {};
 
 /**
- * The finance dashboard widgets slice.
+ * The module dashboard widgets slice.
  */
 export const widgetsSlice = createSlice({
-	name: 'financeDashboardApp/widgets',
+	name: 'moduleDashboardApp/widgets',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
@@ -31,7 +31,7 @@ export const widgetsSlice = createSlice({
 	}
 });
 
-export const selectWidgets = (state: AppRootStateType) => state.financeDashboardApp.widgets;
+export const selectWidgets = (state: AppRootStateType) => state.moduleDashboardApp.widgets;
 
 export type widgetsSliceType = typeof widgetsSlice;
 

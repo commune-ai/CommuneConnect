@@ -2,7 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import widgets from './widgetsSlice';
 
 /**
- * The Finance dashboard reducer.
+ * The Module dashboard reducer.
  */
 const reducer = combineReducers({
 	widgets

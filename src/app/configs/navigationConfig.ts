@@ -30,11 +30,11 @@ const navigationConfig: FuseNavigationType = [
 		url: '/dashboards/analytics'
 	},
 	{
-		id: 'dashboards.finance',
+		id: 'dashboards.module',
 		title: 'Modules',
 		type: 'item',
 		icon: 'heroicons-outline:table',
-		url: '/dashboards/finance'
+		url: '/dashboards/module'
 	},
 	{
 		id: 'dashboards.crypto',

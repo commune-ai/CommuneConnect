@@ -4,7 +4,7 @@ import FusePageSimple from '@fuse/core/FusePageSimple';
 import { motion } from 'framer-motion';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
-import FinanceDashboardAppHeader from './FinanceDashboardAppHeader';
+import ModuleDashboardAppHeader from './ModuleDashboardAppHeader';
 import PreviousStatementWidget from './widgets/PreviousStatementWidget';
 import CurrentStatementWidget from './widgets/CurrentStatementWidget';
 import AccountBalanceWidget from './widgets/AccountBalanceWidget';
@@ -12,9 +12,9 @@ import RecentTransactionsWidget from './widgets/RecentTransactionsWidget';
 import BudgetWidget from './widgets/BudgetWidget';
 
 /**
- * The finance dashboard app.
+ * The module dashboard app.
  */
-function FinanceDashboardApp() {
+function ModuleDashboardApp() {
 	const dispatch = useAppDispatch();
 	const widgets = useAppSelector(selectWidgets);
 
@@ -64,10 +64,10 @@ function FinanceDashboardApp() {
 
 	return (
 		<FusePageSimple
-			header={<FinanceDashboardAppHeader />}
+			header={<ModuleDashboardAppHeader />}
 			content={content}
 		/>
 	);
 }
 
-export default FinanceDashboardApp;
+export default ModuleDashboardApp;
