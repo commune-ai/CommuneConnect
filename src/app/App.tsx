@@ -21,7 +21,7 @@ import axios from 'axios';
  * Axios HTTP Request defaults
  */
 // axios.defaults.baseURL = process.env.SERVER_URL;
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 // axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const emotionCacheOptions = {

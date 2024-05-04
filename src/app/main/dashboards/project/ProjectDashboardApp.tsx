@@ -59,7 +59,7 @@ function ProjectDashboardApp() {
 			content={
 				<div className="w-full p-12 pt-16 sm:pt-24 lg:ltr:pr-0 lg:rtl:pl-0">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-24 w-full min-w-0 p-24" style = {{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-						<p className='text-lg sm:text-4xl'>At a Glance...</p>
+						<p className='text-lg sm:text-4xl'>Commune AI</p>
 						<div>
 							<Select
 								labelId="category-select-label"

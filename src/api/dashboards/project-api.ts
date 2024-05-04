@@ -1,13 +1,39 @@
-// import mockApi from '../../mock-api.json';
-// import mock from '../../mock';
+import axios from "axios";
+const API_URL = 'http://135.181.214.161:5000';
+export const getInfos = async () => {
+  try {
+    const res = await axios.get(API_URL + "/info");
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching modules:", error);
+  }
+};
+export const getHistory = async () => {
+  try {
+    const res = await axios.get(API_URL + "/modules/history");
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching modules:", error);
+  }
+};
 
-// const widgets = mockApi.components.examples.project_dashboard_widgets.value;
-// const projects = mockApi.components.examples.project_dashboard_projects.value;
+export const server_analytics = async () => {
+  try {
+    const res = await axios.get("https://api.comstats.org/validators");
+    const sorted_data = res.data?.validators.sort(
+      (a, b) => b.balance - a.balance
+    );
+    return sorted_data;
+  } catch (error) {
+    console.error("Error fetching modules:", error);
+  }
+};
 
-// mock.onGet('/api/dashboards/project/widgets').reply(() => {
-// 	return [200, widgets];
-// });
-
-// mock.onGet('/api/dashboards/project/projects').reply(() => {
-// 	return [200, projects];
-// });
+export const getStats = async () => {
+  try {
+    const res = await axios.get("https://api.comstats.org/stats");
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching modules:", error);
+  }
+};

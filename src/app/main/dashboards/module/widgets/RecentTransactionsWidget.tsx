@@ -103,7 +103,7 @@ function RecentTransactionsWidget() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {modules.map((module, index) => (
+            {modules?.map((module, index) => (
               <TableRow key={index}>
                 <TableCell
                   key={`${index}-checkbox`}
