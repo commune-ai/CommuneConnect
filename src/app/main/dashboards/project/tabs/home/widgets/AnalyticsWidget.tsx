@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useDrawingArea } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import { server_analytics } from "src/api/dashboards/project-api";
 
-const data = [];
 const size = {
   width: 600,
   height: 200,
@@ -31,15 +30,19 @@ function PieCenterLabel({ children }) {
 }
 
 export default function PieChartWithCenterLabel() {
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     server_analytics()
       .then((dt) => {
+        console.log(dt)
         dt?.slice(0, 4).map((itm) => {
-          data.push({ label: itm.name, value: itm.balance });
+          setData(prevData => [...prevData, { label: itm.name, value: itm.balance }]);
+          console.log(data)
         });
       })
       .catch((e) => console.log(e));
-  });
+  }, []);
   return (
     <Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden p-24">
       <div className="flex flex-col sm:flex-row items-start justify-between">

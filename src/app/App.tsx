@@ -22,6 +22,8 @@ import axios from 'axios';
  */
 // axios.defaults.baseURL = process.env.SERVER_URL;
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.common['Authorization'] = 'Bearer token';
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const emotionCacheOptions = {

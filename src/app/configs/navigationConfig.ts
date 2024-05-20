@@ -30,26 +30,33 @@ const navigationConfig: FuseNavigationType = [
 		url: '/dashboards/analytics'
 	},
 	{
+		id: 'dashboards.history',
+		title: 'History',
+		type: 'item',
+		icon: 'heroicons-outline:document-report',
+		url: '/dashboards/history'
+	},
+	{
 		id: 'dashboards.module',
 		title: 'Modules',
 		type: 'item',
 		icon: 'heroicons-outline:table',
 		url: '/dashboards/module'
 	},
-	{
-		id: 'dashboards.crypto',
-		title: 'Schedule',
-		type: 'item',
-		icon: 'heroicons-outline:document-report',
-		url: '/dashboards/crypto'
-	},
-	{
-		id: 'apps.calendar',
-		title: 'Calendar',
-		type: 'item',
-		icon: 'heroicons-outline:calendar',
-		url: '/apps/calendar'
-	},
+	// {
+	// 	id: 'dashboards.crypto',
+	// 	title: 'Schedule',
+	// 	type: 'item',
+	// 	icon: 'heroicons-outline:document-report',
+	// 	url: '/dashboards/crypto'
+	// },
+	// {
+	// 	id: 'apps.calendar',
+	// 	title: 'Calendar',
+	// 	type: 'item',
+	// 	icon: 'heroicons-outline:calendar',
+	// 	url: '/apps/calendar'
+	// },
 	{
 		id: 'apps.modulecard',
 		title: 'ModuleCard',
@@ -57,20 +64,20 @@ const navigationConfig: FuseNavigationType = [
 		icon: 'heroicons-outline:chip',
 		url: '/apps/contacts'
 	},
-	{
-		id: 'apps.chat',
-		title: 'Messages',
-		type: 'item',
-		icon: 'heroicons-outline:chat-alt',
-		url: '/apps/chat'
-	},
-	{
-		id: 'apps.academy',
-		title: 'Notification',
-		type: 'item',
-		icon: 'heroicons-outline:bell',
-		url: '/undefined'
-	},
+	// {
+	// 	id: 'apps.chat',
+	// 	title: 'Messages',
+	// 	type: 'item',
+	// 	icon: 'heroicons-outline:chat-alt',
+	// 	url: '/apps/chat'
+	// },
+	// {
+	// 	id: 'apps.academy',
+	// 	title: 'Notification',
+	// 	type: 'item',
+	// 	icon: 'heroicons-outline:bell',
+	// 	url: '/undefined'
+	// },
 	{
 		id: 'apps.contacts',
 		title: 'settings',
