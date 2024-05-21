@@ -68,22 +68,7 @@ function ContactsApp() {
 				<ContactsHeader />
 				<Contacttable />
 
-				<div style={{display: "flex", justifyContent: "center", alignItems: "center", width: "200px", height: "70px",
-					backgroundColor: "#ff3399", marginTop: "30px", borderRadius: "10px"}}>
-					<div>
-						<FuseSvgIcon>heroicons-outline:user</FuseSvgIcon>	
-					</div>
-					<div style={{marginLeft: "20px"}}>
-						<p>Rohan</p>
-						<p>Write access</p>
-					</div>
-					<IconButton
-							aria-haspopup="true"
-							// onClick={openSelectedOrdersMenu}
-							size="large"
-					><FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>	
-					</IconButton>
-				</div>
+				
 			</motion.div>
 			<motion.div
 				variants={item}
@@ -117,31 +102,7 @@ function ContactsApp() {
 
 					<img src="assets/images/etc/moduleTable.png" style={{width: "100%", height: "350px", marginTop: "30px"}}/>
 
-					<div style={{display: "flex", justifyContent: "center", borderRadius: "10px", margin: "auto", marginTop: "70px",
-						alignItems: "center", backgroundColor: "green", width: "140px", height: "50px"}}>
-						<p style={{color: "white"}}>DOCS</p>
-					</div>
 
-					<div style={{marginTop: "20px", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-						<IconButton
-								aria-haspopup="true"
-								// onClick={openSelectedOrdersMenu}
-								size="large" style={{border: "1px solid green", borderRadius: "10px"}}
-						><FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>	
-						</IconButton>
-						<div style={{border: "1px solid green", borderRadius: "10px", display: "flex", alignItems: "center",
-						width: "120px", height: "60px", justifyContent: "center"}}>
-							<p style={{cursor: "default"}}>% SECRETS</p>
-						</div>
-						<div>
-						<IconButton
-								aria-haspopup="true"
-								// onClick={openSelectedOrdersMenu}
-								size="large" style={{border: "1px solid green", borderRadius: "10px"}}
-						><FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>	
-						</IconButton>
-						</div>
-					</div>
 				</div>
 			</motion.div>
 		</motion.div>
