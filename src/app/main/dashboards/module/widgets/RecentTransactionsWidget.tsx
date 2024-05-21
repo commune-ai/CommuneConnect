@@ -29,6 +29,7 @@ function RecentTransactionsWidget() {
     getModules()
       .then((data) => {
         setModules(data);
+        
       })
       .catch((err) => {
         console.log(err);

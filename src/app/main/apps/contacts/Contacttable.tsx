@@ -7,6 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import { useState, useEffect } from 'react';
+import { getMetaData } from 'src/api/dashboards/project-api';
+import { getModules } from "src/api/dashboards/module-api";
 
 interface Column {
   id: 'name' | 'code' | 'population' | 'size' | 'density';
@@ -18,16 +21,16 @@ interface Column {
 
 const columns: Column[] = [
   { id: 'name', label: 'Users', minWidth: 170 },
-  { id: 'code', label: 'Spend', minWidth: 100 },
+  { id: 'code', label: 'ModuleName', minWidth: 100 },
   {
     id: 'population',
-    label: 'Access',
+    label: 'Invoked',
     minWidth: 170,
     align: 'right',
   },
   {
     id: 'size',
-    label: 'Last Invoked',
+    label: 'MetaData',
     minWidth: 170,
     align: 'right',
   },
@@ -70,6 +73,17 @@ const rows = [
 export default function ColumnGroupingTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [modulesData, setModulesData] = useState([]);
+
+  useEffect(() => {
+    getMetaData()
+      .then((data) => {
+        setModulesData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
