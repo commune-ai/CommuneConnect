@@ -25,7 +25,7 @@ function ContactsHeader() {
 					animate={{ x: 0, transition: { delay: 0.2 } }}
 				>
 					<Typography className="text-24 md:text-32 font-extrabold tracking-tight leading-none">
-						OpenAI Module Info
+						Module Info
 					</Typography>
 				</motion.span>
 			</div>

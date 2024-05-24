@@ -24,13 +24,13 @@ const columns: Column[] = [
   { id: 'code', label: 'ModuleName', minWidth: 100 },
   {
     id: 'population',
-    label: 'Invoked',
+    label: 'Readability',
     minWidth: 170,
     align: 'right',
   },
   {
     id: 'size',
-    label: 'MetaData',
+    label: 'Invoked',
     minWidth: 170,
     align: 'right',
   },
