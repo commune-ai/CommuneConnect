@@ -15,6 +15,71 @@ import { motion } from 'framer-motion';
 import FuseSvgIcon from '../../../../@fuse/core/FuseSvgIcon';
 import IconButton from '@mui/material/IconButton';
 
+const jsonData = {
+	"functions": [
+	  "start_dataset",
+	  "score",
+	  "sample",
+	  "set_dataset",
+	  "__init__"
+	],
+	"schema": {
+	  "__init__": {
+		"default": {
+		  "config": null,
+		  "kwargs": null
+		},
+		"docs": null,
+		"input": {
+		  "config": "NA"
+		},
+		"output": {},
+		"type": "self"
+	  },
+	  "sample": {
+		"default": {},
+		"docs": null,
+		"input": {},
+		"output": {},
+		"type": "self"
+	  },
+	  "score": {
+		"default": {
+		  "module": "model.openai"
+		},
+		"docs": null,
+		"input": {
+		  "module": "str"
+		},
+		"output": {},
+		"type": "self"
+	  },
+	  "set_dataset": {
+		"default": {
+		  "dataset": null,
+		  "kwargs": null
+		},
+		"docs": null,
+		"input": {
+		  "dataset": "str"
+		},
+		"output": {},
+		"type": "self"
+	  },
+	  "start_dataset": {
+		"default": {
+		  "dataset": null
+		},
+		"docs": null,
+		"input": {
+		  "dataset": "NA"
+		},
+		"output": {},
+		"type": "static"
+	  }
+	}
+  };
+
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-header': {
@@ -54,6 +119,13 @@ function ContactsApp() {
 		setRightSidebarOpen(Boolean(routeParams.id));
 	}, [routeParams]);
 
+	const [data, setData] = useState(null);
+
+	useEffect(() => {
+		// Simulate fetching data
+		setData(jsonData);
+	}, []);
+
 	return (
 		<motion.div
 			className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-24 w-full min-w-0 p-24"
@@ -68,80 +140,38 @@ function ContactsApp() {
 				<ContactsHeader />
 				<Contacttable />
 
-				<div style={{display: "flex", justifyContent: "center", alignItems: "center", width: "200px", height: "70px",
-					backgroundColor: "#ff3399", marginTop: "30px", borderRadius: "10px"}}>
-					<div>
-						<FuseSvgIcon>heroicons-outline:user</FuseSvgIcon>	
-					</div>
-					<div style={{marginLeft: "20px"}}>
-						<p>Rohan</p>
-						<p>Write access</p>
-					</div>
-					<IconButton
-							aria-haspopup="true"
-							// onClick={openSelectedOrdersMenu}
-							size="large"
-					><FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>	
-					</IconButton>
-				</div>
+				
 			</motion.div>
 			<motion.div
 				variants={item}
 				className="sm:col-span-2 md:col-span-1"
 				style={{padding: "30px"}}
 			>
-
-				<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "50px"}}>
-					<div style={{display: "flex", alignItems: "center"}}>
-						<img src="assets/images/avatars/brian-hughes.jpg" style={{width: "30px", height: "30px"}}/>
-						<span style={{marginLeft: "20px"}}>Jan Kowalski</span>
-					</div>
-					<span style={{cursor: "default"}} className="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium fuse-list-item-icon shrink-0 MuiBox-root muiltr-g3zkhd" aria-hidden="true">settings</span>
-				</div>
-
-				<div style={{border: "1px solid green", borderRadius: "10px", marginTop: "10px", padding: "20px"}}>
+				<div style={{border: "1px solid green", borderRadius: "10px", marginTop: "10px", padding: "20px", height:"100%"}}>
 					<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", height: "70px",
 						backgroundColor: "#ff3399", borderRadius: "10px"}}>
 						<div style={{display: "flex", alignItems: "center", marginLeft: "10px"}}>
 							<FuseSvgIcon style={{marginRight: "10px"}}>heroicons-outline:user</FuseSvgIcon>
 							<p>Metadata</p>
 						</div>
-						
+						<div>
+							{/* {Object.keys(data.schema).map((key) => (
+							<div key={key}>
+								<h2>{key}</h2>
+								<pre>{JSON.stringify(data.schema[key], null, 2)}</pre>
+							</div>
+							))} */}
+						</div>
 						<IconButton
 								aria-haspopup="true"
 								// onClick={openSelectedOrdersMenu}
 								size="large"
-						><FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>	
+						>
 						</IconButton>
 					</div>
+					{/* <img src="assets/images/etc/moduleTable.png" style={{width: "100%", height: "350px", marginTop: "30px"}}/> */}
+					<pre>{JSON.stringify(data, null, 2)}</pre>
 
-					<img src="assets/images/etc/moduleTable.png" style={{width: "100%", height: "350px", marginTop: "30px"}}/>
-
-					<div style={{display: "flex", justifyContent: "center", borderRadius: "10px", margin: "auto", marginTop: "70px",
-						alignItems: "center", backgroundColor: "green", width: "140px", height: "50px"}}>
-						<p style={{color: "white"}}>DOCS</p>
-					</div>
-
-					<div style={{marginTop: "20px", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-						<IconButton
-								aria-haspopup="true"
-								// onClick={openSelectedOrdersMenu}
-								size="large" style={{border: "1px solid green", borderRadius: "10px"}}
-						><FuseSvgIcon>heroicons-outline:dots-vertical</FuseSvgIcon>	
-						</IconButton>
-						<div style={{border: "1px solid green", borderRadius: "10px", display: "flex", alignItems: "center",
-						width: "120px", height: "60px", justifyContent: "center"}}>
-							<p style={{cursor: "default"}}>% SECRETS</p>
-						</div>
-						<div>
-						<IconButton
-								aria-haspopup="true"
-								// onClick={openSelectedOrdersMenu}
-								size="large" style={{border: "1px solid green", borderRadius: "10px"}}
-						><FuseSvgIcon>heroicons-outline:trash</FuseSvgIcon>	
-						</IconButton>
-						</div>
-					</div>
 				</div>
 			</motion.div>
 		</motion.div>

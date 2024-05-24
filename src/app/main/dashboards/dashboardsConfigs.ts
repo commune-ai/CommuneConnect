@@ -1,7 +1,7 @@
 import { FuseRouteConfigsType } from '@fuse/utils/FuseUtils';
 import AnalyticsDashboardAppConfig from './analytics/AnalyticsDashboardAppConfig';
 import ProjectDashboardAppConfig from './project/ProjectDashboardAppConfig';
-import FinanceDashboardAppConfig from './finance/FinanceDashboardAppConfig';
+import ModuleDashboardAppConfig from './module/ModuleDashboardAppConfig';
 import CryptoDashboardAppConfig from './crypto/CryptoDashboardAppConfig';
 
 /**
@@ -10,7 +10,7 @@ import CryptoDashboardAppConfig from './crypto/CryptoDashboardAppConfig';
 const dashboardsConfigs: FuseRouteConfigsType = [
 	AnalyticsDashboardAppConfig,
 	ProjectDashboardAppConfig,
-	FinanceDashboardAppConfig,
+	ModuleDashboardAppConfig,
 	CryptoDashboardAppConfig
 ];
 

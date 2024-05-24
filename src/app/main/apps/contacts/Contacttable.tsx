@@ -7,6 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import { useState, useEffect } from 'react';
+import { getMetaData } from 'src/api/dashboards/project-api';
+import { getModules } from "src/api/dashboards/module-api";
 
 interface Column {
   id: 'name' | 'code' | 'population' | 'size' | 'density';
@@ -18,16 +21,16 @@ interface Column {
 
 const columns: Column[] = [
   { id: 'name', label: 'Users', minWidth: 170 },
-  { id: 'code', label: 'Spend', minWidth: 100 },
+  { id: 'code', label: 'ModuleName', minWidth: 100 },
   {
     id: 'population',
-    label: 'Access',
+    label: 'Readability',
     minWidth: 170,
     align: 'right',
   },
   {
     id: 'size',
-    label: 'Last Invoked',
+    label: 'Invoked',
     minWidth: 170,
     align: 'right',
   },
@@ -49,28 +52,35 @@ function createData(
   return { name, code, population, size};
 }
 
-const rows = [
-  createData('rohan@gmail.com', '344', 'READ', 3287263),
-  createData('rohan@gmail.com', '344', 'READ', 9596961),
-  createData('rohan@gmail.com', '344', 'READ', 301340),
-  createData('rohan@gmail.com', '344', 'READ', 9833520),
-  createData('rohan@gmail.com', '344', 'READ', 9984670),
-  createData('rohan@gmail.com', '344', 'READ', 7692024),
-  createData('rohan@gmail.com', '344', 'READ', 357578),
-  createData('rohan@gmail.com', '344', 'READ', 70273),
-  createData('rohan@gmail.com', '344', 'READ', 1972550),
-  createData('rohan@gmail.com', '344', 'READ', 377973),
-  createData('rohan@gmail.com', '344', 'READ', 640679),
-  createData('rohan@gmail.com', '344', 'READ', 242495),
-  createData('rohan@gmail.com', '344', 'READ', 17098246),
-  createData('rohan@gmail.com', '344', 'READ', 923768),
-  createData('rohan@gmail.com', '344', 'READ', 8515767),
-];
+// const rows = [
+//   createData('rohan@gmail.com', '344', 'READ', 3287263),
+//   createData('rohan@gmail.com', '344', 'READ', 9596961),
+//   createData('rohan@gmail.com', '344', 'READ', 301340),
+//   createData('rohan@gmail.com', '344', 'READ', 9833520),
+//   createData('rohan@gmail.com', '344', 'READ', 9984670),
+// ];
 
 export default function ColumnGroupingTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [modulesData, setModulesData] = useState([]);
 
+  useEffect(() => {
+    getMetaData()
+      .then((data) => {
+        setModulesData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  console.log("modulesData: ",modulesData);
+  const rows = [];
+  for(const moduleData of modulesData) {
+    rows.push(createData(moduleData.email, moduleData.name, moduleData.invoked?'READ':'NO READ', moduleData.invoked?.active_thread_count??'Null'));
+  };
+  console.log("rows1: ", rows);
+  
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
